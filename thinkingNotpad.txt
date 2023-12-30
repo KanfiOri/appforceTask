@@ -1,0 +1,45 @@
+MUST HAVE => 
+	For Edit Section:
+	* Each user can be editted locally;
+	* Edit button will open an edit module with save and cancel button;
+	* The fields that can be editted: Name, Email, Location;
+	
+	For Add User:
+	* Add User Should Open new User Form
+	
+	Validation:
+	* All fields cannot be empty
+	* Name: min 3 characters
+	* Email: should be a valid email adress
+	Each user should have a uniq email adress
+	
+	Error message should be showen when you try to save the user(do not use html5 validation)
+
+	Delete User: 
+	* Each user can be deleted: Show confirm message before
+
+
+AppForce React architecture:
+	App Component
+		filter section ?? (bonus)
+		Add Person that will pop up AddPerson component
+		list of Prson component
+		
+
+	Person Component 
+		Have delte button
+		have edit Button => will open EditPerson Component
+
+So for now the components are: 
+App - main app
+AddPerson
+EditPerson
+
+state =>
+persons will be in app
+filter??(bonus) will be in app
+
+should be enough to start for now
+
+
+
