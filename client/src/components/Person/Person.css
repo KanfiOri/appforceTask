@@ -1,0 +1,42 @@
+.Person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    height: 100px;
+    margin: 5px;
+    border-radius: 10px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+img {
+    border-radius: 100px;
+    width: 100px;
+    margin-right: 15px
+  }
+
+.PersonDetails {
+    display: flex;
+    align-items: center;
+}
+
+.Name {
+    color: white;
+    font-weight: bold ;
+    font-size: 20px;
+}
+
+.ButtonSection {
+    display: flex;
+    margin-right: 20px;
+}
+
+.Button {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.Delete {
+    color: red;
+}

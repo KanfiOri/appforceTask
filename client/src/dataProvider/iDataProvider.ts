@@ -1,7 +1,7 @@
-import Person from '../Entities/Person'
+import PersonEntity from '../Entities/Person'
 
 export interface reqData {
-    results: Person[],
+    results: PersonEntity[],
     info: any
 }
 

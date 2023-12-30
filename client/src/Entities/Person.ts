@@ -1,17 +1,22 @@
-export default interface Person {
-    id: string,
+export default interface PersonEntity {
+    id: {
+        name: string,
+        value: string
+    },
     name: {
         title: string,
-        firstName: string,
-        lastName: string,
+        first: string,
+        last: string,
     },
     email: string,
-    usermage: {
+    picture: {
         medium: string
     },
     location: {
         country: string,
         city: string,
-        street: string,
+        street: {
+            name: string
+        },
     }
 }
