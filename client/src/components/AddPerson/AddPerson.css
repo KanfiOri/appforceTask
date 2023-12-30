@@ -30,13 +30,29 @@
     border-radius: 10px;
 }
 
-.Close {
+.ButtonSection {
+    display: flex;
+}
+
+.Button {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
     height: 50px;
     width: 100px;
     border-radius: 10px;
+}
+
+.InputSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.Create {
+    background-color: aqua;
+}
+
+.Close {
+    background-color: red;
 }

@@ -57,7 +57,7 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
           </div>
         </div>
         {
-          isAddPersonClicked && <AddPerson />
+          isAddPersonClicked && <AddPerson closeAddPersonPopUp={closeAddPersonPopUp} onAddPerson={onAddPerson}  />
         }
       </div>
   );

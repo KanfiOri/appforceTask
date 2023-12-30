@@ -1,0 +1,25 @@
+.InputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.InputField {
+    width: 500px;
+    border-radius: 10px;
+    height: 30px;
+}
+
+.TextAndError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MessageError {
+    color: red;
+}

@@ -1,6 +1,6 @@
 export default interface PersonEntity {
     id: {
-        name: string,
+        name?: string,
         value: string
     },
     name: {
