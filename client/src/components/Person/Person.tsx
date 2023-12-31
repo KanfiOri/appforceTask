@@ -4,6 +4,7 @@ import './Person.css'
 import EditPerson from '../EditPerson/EditPerson';
 import { TiPencil } from "react-icons/ti";
 import { MdDeleteForever } from "react-icons/md";
+import Delete from '../Delete/Delete';
 
 interface PersonAttrs {
     person: PersonEntity;
@@ -13,14 +14,23 @@ interface PersonAttrs {
 }
 
 const Person: React.FC<PersonAttrs> = ({person, onDeletePerson, onUpdatePerson, checkIfEmailExists}) => {
+    const [deleteValidation, setDeleteValidation]= useState(false)
     const [isEditPersonClicked, setIsEditPersonClicked] = useState(false)
     const openEditPersonPopup = () => {
         setIsEditPersonClicked(true)
       }
     
-      const closeEditPersonPopUp = () => {
+    const closeEditPersonPopUp = () => {
         setIsEditPersonClicked(false)
       }
+    
+    const openDeletePopUp = () => {
+        setDeleteValidation(true)
+    }
+
+    const closeDeletePopUp = () => {
+        setDeleteValidation(false)
+    }
     return (
         <>
             <div className="Person">
@@ -40,10 +50,11 @@ const Person: React.FC<PersonAttrs> = ({person, onDeletePerson, onUpdatePerson, 
                 </div>
                 <div className='ButtonSection'>
                     <div className="EditOrDeleteButton" onClick={openEditPersonPopup}><TiPencil /></div>
-                    <div className="EditOrDeleteButton Delete" onClick={() => {onDeletePerson(person.id.value)}}><MdDeleteForever /></div>
+                    <div className="EditOrDeleteButton Delete" onClick={openDeletePopUp}><MdDeleteForever /></div>
                 </div>
             </div>
             {isEditPersonClicked && <EditPerson closeEditPersonPopUp={closeEditPersonPopUp} person={person} checkIfEmailExists={checkIfEmailExists} onUpdatePerson={onUpdatePerson}  />}
+            {deleteValidation&& <Delete closeDeletePopUp={closeDeletePopUp} onDeletePerson={onDeletePerson} id={person.id.value} name={person.name.first + person.name.last}/>}
         </>
     )
 }
