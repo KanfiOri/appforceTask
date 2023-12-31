@@ -4,6 +4,7 @@ import './App.css';
 import { iDataProvider } from '../../dataProvider/iDataProvider';
 import Person from '../Person/Person';
 import AddPerson from '../AddPerson/AddPerson';
+import { VscAdd } from "react-icons/vsc";
 
 interface AppAttrs {
   dataProvider: iDataProvider
@@ -78,7 +79,8 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
       <div className="App">
         <div className="DataWraper">
           <div className='AddPerson' onClick={openAddPersonPopup}>
-            Add Person
+            <VscAdd />
+            <div>Add Person</div>
           </div>
           <div className='FilterWrapper'>
 

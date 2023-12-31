@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import PersonEntity from '../../Entities/Person'
 import './Person.css'
 import EditPerson from '../EditPerson/EditPerson';
+import { TiPencil } from "react-icons/ti";
+import { MdDeleteForever } from "react-icons/md";
 
 interface PersonAttrs {
     person: PersonEntity;
@@ -37,8 +39,8 @@ const Person: React.FC<PersonAttrs> = ({person, onDeletePerson, onUpdatePerson, 
                     </div>
                 </div>
                 <div className='ButtonSection'>
-                    <div className="Button" onClick={openEditPersonPopup}>Edit</div>
-                    <div className="Button Delete" onClick={() => {onDeletePerson(person.id.value)}}>Delete</div>
+                    <div className="EditOrDeleteButton" onClick={openEditPersonPopup}><TiPencil /></div>
+                    <div className="EditOrDeleteButton Delete" onClick={() => {onDeletePerson(person.id.value)}}><MdDeleteForever /></div>
                 </div>
             </div>
             {isEditPersonClicked && <EditPerson closeEditPersonPopUp={closeEditPersonPopUp} person={person} checkIfEmailExists={checkIfEmailExists} onUpdatePerson={onUpdatePerson}  />}

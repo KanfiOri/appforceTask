@@ -5,6 +5,8 @@ import Input from '../Input/Input';
 import {firstnameValidation, lastnameValidation, emailValidation, countryValidation, cityValidation, streetValidation} from '../../utils/inputValidation'
 import PersonEntity from '../../Entities/Person';
 import './EditPerson.css'
+import { IoMdClose } from "react-icons/io";
+import { MdOutlineDoneOutline } from "react-icons/md";
 
 interface EditPersonAttrs {
     closeEditPersonPopUp(): void;
@@ -60,8 +62,8 @@ const EditPerson: React.FC<EditPersonAttrs> = ({ closeEditPersonPopUp, person, c
                         <Input {...streetValidation} />
                     </form>
                     <div className='ButtonSection'>
-                        <div onClick={onSubmit} className='Button Create'>Update</div>
-                        <div onClick={ closeEditPersonPopUp } className="Button Close">Close</div>
+                        <div onClick={onSubmit} className='Button Create'><IoMdClose /></div>
+                        <div onClick={ closeEditPersonPopUp } className="Button Close"><IoMdClose /></div>
                     </div>
                 </div>
             </div>

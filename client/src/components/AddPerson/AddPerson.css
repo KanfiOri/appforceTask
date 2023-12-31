@@ -53,8 +53,10 @@
 
 .Create {
     background-color: aqua;
+    margin-right: 2px;
 }
 
 .Close {
     background-color: red;
+    margin-left: 2px;
 }
