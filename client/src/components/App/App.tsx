@@ -11,6 +11,7 @@ interface AppAttrs {
 
 const App: React.FC<AppAttrs> = ({dataProvider}) => {
   const [persons, setPersons] = useState<PersonEntity[]>([])
+
   const [isAddPersonClicked, setIsAddPersonClicked] = useState(false)
   useEffect(() => {
     dataProvider.getAllPersons().then((data) => {
@@ -45,6 +46,34 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
     })
   }
 
+  const onUpdatePerson = (id: string, firstname: string, lastname: string, email: string, country: string, city: string, street: string ) => {
+    const updatedPersons = persons.map((person) => {
+      if (person.id.value === id) {
+        return {
+          ...person,
+          name: {
+            ...person.name,
+            first: firstname,
+            last: lastname,
+          },
+          email: email,
+          location: {
+            ...person.location,
+            country: country,
+            city: city,
+            street: {
+              name: street,
+            },
+          },
+        };
+      }
+      return person;
+    });
+  
+    console.log(updatedPersons);
+    setPersons([...updatedPersons]);
+  }
+
   return (
       <div className="App">
         <div className="DataWraper">
@@ -58,7 +87,7 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
             {
               persons.map((person) =>{
                 return(
-                  <Person key={person.id.value} person={person} onDeletePerson={onDeletePerson}/>
+                  <Person key={person.id.value} person={person} onDeletePerson={onDeletePerson} onUpdatePerson={onUpdatePerson} checkIfEmailExists={checkIfEmailExists} />
                 )
               })
             }

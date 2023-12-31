@@ -1,0 +1,11 @@
+.EditPersonBackground {
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.4);
+    left: 0;
+    position: absolute;
+}

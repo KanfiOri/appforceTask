@@ -13,8 +13,6 @@ interface AddPersonAttrs {
 
 const AddPerson: React.FC<AddPersonAttrs> = ({closeAddPersonPopUp, onAddPerson, checkIfEmailExists}) => {
     const methods = useForm()
-    const [isPersonError, setisPersonError] = useState(false) 
-    const [errorMessage, setErrorMessage] = useState("")
     const [success, setSuccess] = useState(false)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
