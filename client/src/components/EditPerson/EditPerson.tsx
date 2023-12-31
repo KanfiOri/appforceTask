@@ -62,7 +62,7 @@ const EditPerson: React.FC<EditPersonAttrs> = ({ closeEditPersonPopUp, person, c
                         <Input {...streetValidation} />
                     </form>
                     <div className='ButtonSection'>
-                        <div onClick={onSubmit} className='Button Create'><IoMdClose /></div>
+                        <div onClick={onSubmit} className='Button Create'><MdOutlineDoneOutline /></div>
                         <div onClick={ closeEditPersonPopUp } className="Button Close"><IoMdClose /></div>
                     </div>
                 </div>
