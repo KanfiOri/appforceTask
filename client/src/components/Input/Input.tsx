@@ -7,6 +7,7 @@ import findInputError from '../../utils/findInputError';
 import isFormInvalid from '../../utils/isFormInvalid';
 
 interface InputAttrs {
+    id: string,
     label: string,
     placeHolder: string,
     type: string,
@@ -19,7 +20,12 @@ interface InputAttrs {
         minLength?: {
             value: number,
             message: string
-        }
+        },
+        pattern?: {
+            value: RegExp,
+            message: string
+        },
+        validate?(value: string): Promise<string | undefined>
     },
 }
 
@@ -27,7 +33,7 @@ interface InputErrorAttrs {
     message: string
 }
 
-const Input: React.FC<InputAttrs> = ({ label, placeHolder, type, name, validation }) => {
+const Input: React.FC<InputAttrs> = ({ id, label, placeHolder, type, name, validation }) => {
     const { register, formState: { errors } } = useFormContext()
     const inputError = findInputError(errors, label)
     const isInvalid = isFormInvalid(inputError)

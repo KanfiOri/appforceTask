@@ -37,6 +37,14 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
     setPersons([...persons, person])
   }
 
+  const checkIfEmailExists = async (email: string): Promise<boolean> => {
+    return new Promise((resolve) => {
+      if(persons.find((person) => person.email === email)) {
+        resolve(true);
+      } else resolve(false);
+    })
+  }
+
   return (
       <div className="App">
         <div className="DataWraper">
@@ -57,7 +65,7 @@ const App: React.FC<AppAttrs> = ({dataProvider}) => {
           </div>
         </div>
         {
-          isAddPersonClicked && <AddPerson closeAddPersonPopUp={closeAddPersonPopUp} onAddPerson={onAddPerson}  />
+          isAddPersonClicked && <AddPerson closeAddPersonPopUp={closeAddPersonPopUp} onAddPerson={onAddPerson} checkIfEmailExists={checkIfEmailExists}  />
         }
       </div>
   );

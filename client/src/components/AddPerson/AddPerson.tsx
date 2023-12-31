@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form';
 import './AddPerson.css'
 import PersonEntity from '../../Entities/Person';
 import Input from '../Input/Input';
+import {firstnameValidation, lastnameValidation, emailValidation, imgValidation, countryValidation, cityValidation, streetValidation} from '../../utils/inputValidation'
 
 interface AddPersonAttrs {
     closeAddPersonPopUp(): void;
     onAddPerson(person: PersonEntity): void
+    checkIfEmailExists(emai: string): Promise<boolean>
 }
 
-const AddPerson: React.FC<AddPersonAttrs> = ({closeAddPersonPopUp, onAddPerson}) => {
+const AddPerson: React.FC<AddPersonAttrs> = ({closeAddPersonPopUp, onAddPerson, checkIfEmailExists}) => {
     const methods = useForm()
+    const [isPersonError, setisPersonError] = useState(false) 
+    const [errorMessage, setErrorMessage] = useState("")
+    const [success, setSuccess] = useState(false)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -18,35 +23,50 @@ const AddPerson: React.FC<AddPersonAttrs> = ({closeAddPersonPopUp, onAddPerson})
     const [city, setCity] = useState("")
     const [street, setStreet] = useState("")
     const [pictureUrl, setPictureUrl] = useState("")
+    useEffect(() => {
+        if(success) {
+            addPerson()
+        }
+    }, [success])
+
     const addPerson = () => {
-        const person: PersonEntity = {
-            id: {
-                value: `${Math.floor(Math.random() * 100000) + 1}`
-            },
-            name: {
-                title: 'Mr',
-                first: `${firstName}`,
-                last: `${lastName}`
-            },
-            email: `${email}`,
-            picture: {
-                medium: `${pictureUrl}`
-            },
-            location: {
-                country: `${country}`,
-                city: `${city}`,
-                street: {
-                    name: `${street}`
+            const person: PersonEntity = {
+                id: {
+                    value: `${Math.floor(Math.random() * 100000) + 1}`
+                },
+                name: {
+                    title: 'Mr',
+                    first: `${firstName}`,
+                    last: `${lastName}`
+                },
+                email: `${email}`,
+                picture: {
+                    medium: `${pictureUrl}`
+                },
+                location: {
+                    country: `${country}`,
+                    city: `${city}`,
+                    street: {
+                        name: `${street}`
+                    }
                 }
             }
-        }
 
-        onAddPerson(person)
-        closeAddPersonPopUp()
+            onAddPerson(person)
+            closeAddPersonPopUp()
     }
 
     const onSubmit = methods.handleSubmit(data => {
-        console.log(data)
+            setSuccess(true)
+            setFirstName(data.firstname)
+            setLastName(data.lastname)
+            setEmail(data.email)
+            setCountry(data.country)
+            setCity(data.city)
+            setStreet(data.street)
+            setPictureUrl(data.img)
+    
+            methods.reset()
     })
 
     return(
@@ -55,13 +75,13 @@ const AddPerson: React.FC<AddPersonAttrs> = ({closeAddPersonPopUp, onAddPerson})
                 <div className='AddPersonWrapper'>
                     <div className="AddPersonTitle">Add Person</div>
                             <form onSubmit={e => e.preventDefault()} noValidate>
-                                <Input label="First Name: " placeHolder='Enter your first name...' type="text" name='firstname' validation={{required: {value: true,message: 'required'}, minLength: {value: 3, message: 'min 3 characters'}}} />
-                                <Input label="Last Name: "  placeHolder='Enter your last name...' type="text" name='lastname' validation={{required: {value: true,message: 'required'}, minLength: {value: 3, message: 'min 3 characters'}}} />
-                                <Input label="Email: "  placeHolder='Enter your email...' type="text" name='email' validation={{required: {value: true,message: 'required'}}} />
-                                <Input label="img: "  placeHolder='Enter your img src...' type="text" name='img' validation={{required: {value: true,message: 'required'}}} />
-                                <Input label="Country: "  placeHolder='Enter your country...' type="text" name='country' validation={{required: {value: true,message: 'required'}}} />
-                                <Input label="City: "  placeHolder='Enter your city...' type="text" name='city' validation={{required: {value: true,message: 'required'}}} />
-                                <Input label="Street: "  placeHolder='Enter your Street...' type="text" name='street' validation={{required: {value: true,message: 'required'}}} />
+                                <Input {...firstnameValidation} />
+                                <Input {...lastnameValidation} />
+                                <Input {...emailValidation(checkIfEmailExists)} />
+                                <Input {...imgValidation} />
+                                <Input {...countryValidation} />
+                                <Input {...cityValidation}/>
+                                <Input {...streetValidation} />
                             </form>
                     <div className='ButtonSection'>
                         <div onClick={onSubmit} className='Button Create'>Create</div>

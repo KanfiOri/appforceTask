@@ -3,8 +3,6 @@ interface Errors {
 }
 
 const findInputError = (errors: any, name: string) => {
-  console.log('errors123: ', errors)
-  console.log('name123: ', name)
     const filtered = Object.keys(errors)
     .filter(key => key.includes(name))
     .reduce((cur, key) => {
