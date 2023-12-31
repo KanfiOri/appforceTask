@@ -37,11 +37,11 @@
 }
 
 .DeleteValidate {
-    background-color: red;
+    background: linear-gradient(to right, #eb3349, #f45c43);    
     margin-right: 2px;
 }
 
 .CloseValidate {
-    background-color: #D1FFBD;
+    background: linear-gradient(to right, #02aab0, #00cdac);    
     margin-left: 2px;
 }

@@ -15,7 +15,7 @@ const Delete: React.FC<DeleteAttrs> = ({closeDeletePopUp, onDeletePerson, id, na
     return(
         <div className='DeleteBackground'>
             <div className='DeleteWrapper'>
-                <div className="HeadText">Are You Sure You Want To Delete {name}</div>
+                <div className="HeadText">Are You Sure You Want To Delete {name} ?</div>
                 <div className='ButtonSection'>
                     <div onClick={() => onDeletePerson(id)} className='Button DeleteValidate'><MdDeleteForever/></div>
                     <div onClick={closeDeletePopUp} className='Button CloseValidate'><IoMdClose/></div>

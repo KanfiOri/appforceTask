@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background-color: rgb(142, 218, 142);
+  background: linear-gradient(to right, #eacda3, #d6ae7b);
   height: 50px;
   width: 200px;
   margin-bottom: 20px;

@@ -54,7 +54,7 @@ const Person: React.FC<PersonAttrs> = ({person, onDeletePerson, onUpdatePerson, 
                 </div>
             </div>
             {isEditPersonClicked && <EditPerson closeEditPersonPopUp={closeEditPersonPopUp} person={person} checkIfEmailExists={checkIfEmailExists} onUpdatePerson={onUpdatePerson}  />}
-            {deleteValidation&& <Delete closeDeletePopUp={closeDeletePopUp} onDeletePerson={onDeletePerson} id={person.id.value} name={person.name.first + person.name.last}/>}
+            {deleteValidation&& <Delete closeDeletePopUp={closeDeletePopUp} onDeletePerson={onDeletePerson} id={person.id.value} name={person.name.first + " " + person.name.last}/>}
         </>
     )
 }
